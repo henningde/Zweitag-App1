@@ -26,16 +26,18 @@ class Weather
 
 	def parseXML
 			condition= @doc.xpath('//xml_api_reply/weather/current_conditions/condition')
-				puts condition[0].attributes["data"]
+			puts "condition: #{condition[0].attributes["data"]}"
+			temp_c= @doc.xpath('//xml_api_reply/weather/current_conditions/temp_c')
+			puts "temp: #{temp_c[0].attributes["data"]}"
 			humidity= @doc.xpath('//xml_api_reply/weather/current_conditions/humidity')
-				puts humidity[0].attributes["data"]
+			puts "humidity: #{humidity[0].attributes["data"]}"
 	end
 end
 
-# reader =Weather.new("münster")
-# reader.loadXML
+reader =Weather.new("münster")
+reader.loadXML
 # puts reader.loadXML
-# puts reader.parseXML
+puts reader.parseXML
 
 
 
