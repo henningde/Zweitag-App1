@@ -15,7 +15,7 @@ describe "Weather"  do
 		loader.should_not be_empty
 	end
 
-		it "Should return  a file with Münster" do
+		it "Should return a file with umlauts" do
 		loader = Weather.new("münster")
 		loader = loader.loadXML.to_s
 		loader.should_not be_empty
