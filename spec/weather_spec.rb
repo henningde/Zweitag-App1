@@ -3,21 +3,29 @@ require_relative "../app/weather.rb"
 
 describe "Weather"  do
 	it "Should return empty" do
-		loader = Weather.new("berlin","asd")
-		loader = loader.loadXML
-		loader.should be_empty
+		lambda{Weather.new("berlin","asd")}.should
+		raise_error(Weather::ParseNokogiriError, "Could not find an XML File")
 	end
 
-
 	it "Should return a file" do
-		loader = Weather.new("berlin")
-		loader = loader.loadXML.to_s
+		loader = Weather.new("berlin").to_s
 		loader.should_not be_empty
 	end
 
-		it "Should return a file with umlauts" do
+	it "Should return a file with umlauts" do
+		loader = Weather.new("münster").to_s
+		loader.should_not be_empty
+	end
+
+	it "Should return the temperatur" do
 		loader = Weather.new("münster")
-		loader = loader.loadXML.to_s
+		loader= loader.temperatur.to_s
+		loader.should_not be_empty
+	end
+
+		it "Should return the humidity" do
+		loader = Weather.new("münster")
+		loader= loader.humidity.to_s
 		loader.should_not be_empty
 	end
 
