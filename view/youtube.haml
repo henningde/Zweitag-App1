@@ -1,0 +1,5 @@
+-require File.expand_path("../../Zweitag-App1/app/youtube.rb", __FILE__)
+-youtube =  YouTube.new(req["location"])
+%p Titel #{youtube.title}
+%p
+<object width="425" height="355"><param name="movie" value="#{youtube.link}"></param><param name="wmode" value="transparent"></param><embed src="#{youtube.link}" type="application/x-shockwave-flash" wmode="transparent" width="425" height="355"></embed></object> 

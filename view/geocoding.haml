@@ -1,0 +1,26 @@
+-require File.expand_path("../../Zweitag-App1/app/geocoding.rb", __FILE__)
+-geocoding =  Geocoding.new(req["location"] )
+/ =geocoding.longitude
+/ =geocoding.latitude
+/ =req["location"] 
+/ =req["api"] 
+#map{:style=>"width: 500px; height: 400px;"}
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAbj0X755qiY9iV_DMExR9BRQHv7RIr64yq2a_tOiVSOTcm27AJhTLIkT2JHkHnXmlTHdN0Xca24eNHw" type="text/javascript"></script>
+
+:javascript
+	//<![CDATA[
+	function load() {
+		if (GBrowserIsCompatible()) {
+		var map = new GMap2(document.getElementById("map")); map.addControl(new GSmallMapControl());
+		var point = new GLatLng(#{geocoding.latitude},#{geocoding.longitude});
+	geocoder = new GClientGeocoder();
+	map.setCenter(point, 13);
+	var marker = new GMarker(point);
+	var info="<p style='font-family: Arial; font-size: small;'>#{req["location"]}";
+	map.addOverlay(marker);
+	GEvent.addListener(marker, "click", function() { marker.openInfoWindowHtml(info); });
+	map.addOverlay(marker);
+	marker.openInfoWindowHtml(info); 
+	}
+	}
+	//]]>

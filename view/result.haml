@@ -1,0 +1,29 @@
+
+%html
+	%meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
+	%body{:onload => "load()", :onunload =>"GUnload()"}
+		#content 
+			.left.column
+				%h2 Welcome
+
+				
+			.right.column
+		-if req["location"] !=""
+			%p Hallo  suche nach #{req["location"] }
+			-if req["location"] !="" && (req["api"] =="Location" || req["api"] =="all")
+				-template = Tilt.new('geocoding.haml')
+				=template.render(nil,:req=>req)
+			-if req["location"] !="" && (req["api"] =="Picture" || req["api"] =="all")
+				-template = Tilt.new('panoramio.haml')
+				=template.render(nil,:req=>req)
+			-if req["location"] !="" && (req["api"] =="YouTube" || req["api"] =="all")
+				-template = Tilt.new('youtube.haml')
+				=template.render(nil,:req=>req)
+			-if req["location"] !="" && (req["api"] =="Weather" || req["api"] =="all")
+				-template = Tilt.new('weather.haml')
+				=template.render(nil,:req=>req)
+		-else
+			%p{:style=>"color:red;font-weight:bold"} Fehler bei der Suche
+		%p{:style=>"font-weight:bold"}  Neue Suche
+		-template = Tilt.new('index.haml')
+		=template.render(nil,:req=>req)

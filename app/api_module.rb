@@ -33,7 +33,7 @@ module ApiModule
 	def parse_xml
 			
 #puts @doc
-			@xml_code = Nokogiri::XML(@doc)
+			@xml_code = Nokogiri::XML(@doc, nil, 'UTF-8')
 			@xml_code.encoding = 'utf-8'
 			@xml_code.remove_namespaces!
 #puts @xml_code

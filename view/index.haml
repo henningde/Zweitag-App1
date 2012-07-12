@@ -1,0 +1,12 @@
+%meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
+%form{:name => "api_form", :action =>"self", :method =>"post", "accept-charset" => "UTF-8"}
+	%fieldset
+		%label{:for => "message[name]"} Location:
+		%input{:type => "text", :name => "location", :class => "text"}
+		%p
+		%label{:for => "message[mail]"} API:
+		%select{:name =>"api"}
+			- ['Location', 'YouTube', 'Weather', 'Picture','all'].each do |i|
+				%option{:value => i}= i
+		%p
+		%input{:type => "submit",:name => "send",  :value => "Search...", :class => "text"}

@@ -44,9 +44,19 @@ describe "Weather"  do
 		loader.should == "Meistens bewölkt"
 	end
 
-			it "Should return the temperatur" do
+	it "Should return the temperatur" do
 		loader= @loader.temperatur
 		loader.should == 14
+	end
+
+	it "Should return the icon_today" do
+		loader= @loader.condition.to_s
+		loader.should_not be_empty
+	end
+
+	it "Should return the icon_tomorrow" do
+		loader= @loader.condition.to_s
+		loader.should_not be_empty
 	end
 
 end

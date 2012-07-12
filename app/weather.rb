@@ -29,10 +29,14 @@ attr_accessor :xml_code
 
 		@data[:humidity]= current_node.xpath('./humidity/@data').to_s
 
+		@data[:icon_today]= current_node.xpath('./icon/@data').to_s
+
 		current_node = @xml_code.xpath("//xml_api_reply/weather/forecast_conditions[2]").first
 		temp_tomorrow_low= current_node.xpath('./low/@data')
 		temp_tomorrow_high=current_node.xpath('./high/@data')
-					
+		
+
+		@data[:icon_tomorrow]= current_node.xpath('./icon/@data').to_s			
 		@data[:temperatur_tomorrow] =(temp_tomorrow_low.to_s.to_i+ temp_tomorrow_high.to_s.to_i)/2
 	@data
 	end
@@ -54,6 +58,14 @@ attr_accessor :xml_code
 
 	def temperatur_tomorrow
 		data[:temperatur_tomorrow]
+	end
+
+	def icon_today
+		data[:icon_today]
+	end
+
+	def icon_tomorrow
+		data[:icon_tomorrow]
 	end
 
 end
