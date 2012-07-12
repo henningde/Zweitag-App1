@@ -1,4 +1,4 @@
-
+-@dir="view/"
 %html
 	%meta{"http-equiv" => "Content-Type", :content => "text/html; charset=utf-8"}
 	%body{:onload => "load()", :onunload =>"GUnload()"}
@@ -11,19 +11,19 @@
 		-if req["location"] !=""
 			%p Hallo  suche nach #{req["location"] }
 			-if req["location"] !="" && (req["api"] =="Location" || req["api"] =="all")
-				-template = Tilt.new('geocoding.haml')
+				-template = Tilt.new(@dir+'geocoding.haml')
 				=template.render(nil,:req=>req)
 			-if req["location"] !="" && (req["api"] =="Picture" || req["api"] =="all")
-				-template = Tilt.new('panoramio.haml')
+				-template = Tilt.new(@dir+'panoramio.haml')
 				=template.render(nil,:req=>req)
 			-if req["location"] !="" && (req["api"] =="YouTube" || req["api"] =="all")
-				-template = Tilt.new('youtube.haml')
+				-template = Tilt.new(@dir+'youtube.haml')
 				=template.render(nil,:req=>req)
 			-if req["location"] !="" && (req["api"] =="Weather" || req["api"] =="all")
-				-template = Tilt.new('weather.haml')
+				-template = Tilt.new(@dir+'weather.haml')
 				=template.render(nil,:req=>req)
 		-else
 			%p{:style=>"color:red;font-weight:bold"} Fehler bei der Suche
 		%p{:style=>"font-weight:bold"}  Neue Suche
-		-template = Tilt.new('index.haml')
+		-template = Tilt.new(@dir+'index.haml')
 		=template.render(nil,:req=>req)
