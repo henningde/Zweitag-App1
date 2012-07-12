@@ -3,12 +3,12 @@ require 'rack'
 require 'tilt'
 require 'haml'
 require 'json'
+
 #Start me with rackup config.ru
 #config.ru
 
 class Application
 	def self.run(env)
-		
 		if env["PATH_INFO"]=="/"
 			template = Tilt.new('index.haml')
 			output=template.render
