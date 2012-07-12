@@ -1,4 +1,6 @@
 # coding: utf-8
+require 'nokogiri'
+require 'json'
 require_relative 'geocoding.rb'
 require_relative 'weather.rb'
 require_relative 'panoramio.rb'

@@ -30,3 +30,4 @@ DEPENDENCIES
   nokogiri
   pry
   rspec
+  rspec-mocks

@@ -1,0 +1,116 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Münster",
+               "short_name" : "Münster",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Münster",
+               "short_name" : "Münster",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Nordrhein-Westfalen",
+               "short_name" : "NRW",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Germany",
+               "short_name" : "DE",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Münster, Germany",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 52.06001960,
+                  "lng" : 7.77436160
+               },
+               "southwest" : {
+                  "lat" : 51.84015110000001,
+                  "lng" : 7.473832499999999
+               }
+            },
+            "location" : {
+               "lat" : 51.95148080,
+               "lng" : 7.625538799999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 52.06137769999999,
+                  "lng" : 7.88165760
+               },
+               "southwest" : {
+                  "lat" : 51.8413140,
+                  "lng" : 7.369420
+               }
+            }
+         },
+         "types" : [ "locality", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Munster",
+               "short_name" : "Munster",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "North",
+               "short_name" : "North",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Lake",
+               "short_name" : "Lake",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Indiana",
+               "short_name" : "IN",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Munster, IN, USA",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 41.5812350,
+                  "lng" : -87.48013990
+               },
+               "southwest" : {
+                  "lat" : 41.5227350,
+                  "lng" : -87.5250410
+               }
+            },
+            "location" : {
+               "lat" : 41.56447980,
+               "lng" : -87.51254120
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 41.5812350,
+                  "lng" : -87.48013990
+               },
+               "southwest" : {
+                  "lat" : 41.5227350,
+                  "lng" : -87.5250410
+               }
+            }
+         },
+         "types" : [ "locality", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

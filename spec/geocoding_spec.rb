@@ -1,34 +1,41 @@
 # coding: utf-8
 require_relative "../app/geocoding.rb"
-
-
+require 'json'
 describe "Geocoding"  do
-	it "Should return empty" do
-		lambda{Geocoding.new("berlin")}.should
-		raise_error(Geocoding::LoadConnectionError, "Could not find an XML File")
+
+
+	before(:each) do
+		@loader = Geocoding.new("münster")
+		@json_code_dummy = open('spec/lib/geocode.json'){ |f| f.read }
+		@loader.stub!(:open){ @json_code_dummy }
+		
+	
+	 end
+	it "Should return a hash" do
+		json_code_dummy = JSON.parse(@json_code_dummy)
+
+		
+		@loader.json_code=json_code_dummy
+		loader= @loader.read_parameters
+		loader= loader[:longitude]
+		loader.should == 7.625538799999999
+		#loader.should_not be_empty
 	end
 
-	it "Should return a file" do
-		loader = Geocoding.new("berlin").to_s
+	it "Should return the longitude" do
+		loader= @loader.longitude.to_s
 		loader.should_not be_empty
 	end
 
-	it "Should return the longitude " do
-		loader = Geocoding.new("münster")
-		loader= loader.longitude.to_s
-		loader.should_not be_empty
-	end
 
-		it "Should return the longitude" do
-		loader = Geocoding.new("münster")
-		loader= loader.longitude.to_s
-		loader.should_not be_empty
+	it "Should return the latitude" do
+		loader= @loader.latitude
+		loader.should == 51.9514808
 	end
-
-		it "Should return the latitude" do
-		loader = Geocoding.new("münster")
-		loader= loader.latitude.to_s
-		loader.should_not be_empty
+	
+	it "Should return the longitude" do
+		loader= @loader.longitude
+		loader.should == 7.625538799999999
 	end
 
 end
