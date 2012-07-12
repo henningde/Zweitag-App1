@@ -13,6 +13,7 @@ module ApiModule
 		# binding.pry
 		encoded = URI.encode(@url)
 		@doc = open(encoded){ |f| f.read }
+		@doc = @doc.encode("utf-8", @doc.encoding)
 		rescue OpenURI::HTTPError
 			raise LoadConnectionError, "Could not reach the API."
 		rescue Errno::ENOENT
@@ -33,8 +34,8 @@ module ApiModule
 	def parse_xml
 			
 #puts @doc
-			@xml_code = Nokogiri::XML(@doc, nil, 'UTF-8')
-			@xml_code.encoding = 'utf-8'
+			@xml_code = Nokogiri::XML(@doc)#, nil, 'UTF-8'
+			# @xml_code.encoding = 'utf-8'
 			@xml_code.remove_namespaces!
 #puts @xml_code
 		rescue Errno::ENOENT
