@@ -36,7 +36,7 @@ describe "YouTube"  do
 	
 	it "Should return the link" do
 		loader= @loader.link.to_s
-		loader.should == "https://www.youtube.com/watch?v=e-a-jyahRL8&feature=youtube_gdata"
+		loader.should == "https://www.youtube.com/v/e-a-jyahRL8?version=3&f=videos&app=youtube_gdata"
 	end
 
 	it "Should return the video_id" do

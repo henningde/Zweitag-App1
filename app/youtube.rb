@@ -24,7 +24,8 @@ attr_accessor :xml_code
 
 		@data[:title] = current_node.xpath('./title/text()').to_s
 
-		@data[:link] = current_node.xpath("./link[@rel='alternate']/@href").to_s
+		@data[:link] = current_node.xpath("./group/content[1]/@url").to_s
+
 		# binding.pry
 		@data
 
