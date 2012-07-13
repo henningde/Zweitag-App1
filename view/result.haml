@@ -9,7 +9,7 @@
 				
 			.right.column
 		-if req["location"] !=""
-			%p Hallo  suche nach #{req["location"] }
+			%p  suche nach #{req["location"].capitalize }
 			-if req["location"] !="" && (req["api"] =="Location" || req["api"] =="all")
 				=render_url('geocoding.haml',req)
 			-if req["location"] !="" && (req["api"] =="Picture" || req["api"] =="all")

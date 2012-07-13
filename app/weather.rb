@@ -21,6 +21,8 @@ attr_accessor :xml_code
 
 	def read_parameters
 	@data||=Hash.new
+
+	if @xml_code.xpath("//xml_api_reply/weather/problem_cause").to_s==""
 		current_node = @xml_code.xpath("//xml_api_reply/weather/current_conditions").first
 		@data[:condition]= current_node.xpath('./condition/@data').to_s
 
@@ -38,7 +40,9 @@ attr_accessor :xml_code
 
 		@data[:icon_tomorrow]= current_node.xpath('./icon/@data').to_s			
 		@data[:temperatur_tomorrow] =(temp_tomorrow_low.to_s.to_i+ temp_tomorrow_high.to_s.to_i)/2
-	@data
+	
+end
+@data
 	end
 
 

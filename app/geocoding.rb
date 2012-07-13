@@ -21,11 +21,14 @@ attr_accessor :json_code
 
 
 	def read_parameters
-@data||=Hash.new
+		@data||=Hash.new
+		if @json_code["status"]!="ZERO_RESULTS"
 			location = @json_code["results"].first["geometry"]["location"]
 			@data[:longitude] = location["lng"]
 			@data[:latitude]  = location["lat"]
-			@data
+			
+		end
+		@data
 	end
 
 	public 

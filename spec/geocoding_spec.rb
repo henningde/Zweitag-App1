@@ -32,10 +32,18 @@ describe "Geocoding"  do
 		loader= @loader.latitude
 		loader.should == 51.9514808
 	end
-	
+
+
+
 	it "Should return the longitude" do
 		loader= @loader.longitude
 		loader.should == 7.625538799999999
 	end
 
+	
+	it "Should return empty lng &lat for münsteer" do
+		@loader = Geocoding.new("münsteer")
+		loader= @loader.latitude
+		loader.should be_nil
+	end
 end

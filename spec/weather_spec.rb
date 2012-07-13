@@ -59,4 +59,10 @@ describe "Weather"  do
 		loader.should_not be_empty
 	end
 
+	it "Should return empty lng &lat for münsteer" do
+		@loader = Weather.new("münsteer")
+		loader= @loader.condition
+		loader.should be_nil
+	end
+
 end

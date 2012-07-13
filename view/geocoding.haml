@@ -1,38 +1,32 @@
 -require File.expand_path("../../app/geocoding.rb", __FILE__)
--geocoding =  Geocoding.new(req["location"] )
-/ =geocoding.longitude
-/ =geocoding.latitude
-/ =req["location"] 
-/ =req["api"] 
-#map_canvas{:style=>"width: 500px; height: 400px;"}
-<script type="text/javascript"src="https://maps.google.com/maps/api/js?sensor=false">
-</script>
+-geocoding =	Geocoding.new(req["location"] )
+- if geocoding.longitude!=nil
+	#map_canvas{:style=>"width: 500px; height: 400px;"}
+	<script type="text/javascript"src="https://maps.google.com/maps/api/js?sensor=false">
+	</script>
 
 
-:javascript
-  function initialize() {
-    var latlng = new google.maps.LatLng(#{geocoding.latitude},#{geocoding.longitude});
-    var myOptions = {
-      zoom: 8,
-      center: latlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    var map = new google.maps.Map(document.getElementById("map_canvas"),
-        myOptions);
+	:javascript
+		function initialize() {
+		var latlng = new google.maps.LatLng(#{geocoding.latitude},#{geocoding.longitude});
+		var myOptions = {
+			zoom: 8,
+			center: latlng,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"),
+				myOptions);
 
-    var marker = new google.maps.Marker({
-    position: latlng,
-    map:map
-    });
-    var infowindow = new google.maps.InfoWindow({content: "#{req["location"]}"});
+		var marker = new google.maps.Marker({
+		position: latlng,
+		map:map
+		});
+		var infowindow = new google.maps.InfoWindow({content: "#{req["location"].capitalize}"});
 
-    google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
-    });
-    infowindow.open(map,marker);
-  }
-
-
-
-
-
+		google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map,marker);
+		});
+		infowindow.open(map,marker);
+		}
+-else
+	%p Empty API
