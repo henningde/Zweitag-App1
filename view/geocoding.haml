@@ -21,9 +21,15 @@
         myOptions);
 
     var marker = new google.maps.Marker({
-    	position: latlng,
-    	map:map
-    	});
+    position: latlng,
+    map:map
+    });
+    var infowindow = new google.maps.InfoWindow({content: "#{req["location"]}"});
+
+    google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+    });
+    infowindow.open(map,marker);
   }
 
 
