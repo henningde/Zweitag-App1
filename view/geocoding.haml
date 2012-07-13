@@ -4,23 +4,29 @@
 / =geocoding.latitude
 / =req["location"] 
 / =req["api"] 
-#map{:style=>"width: 500px; height: 400px;"}
-<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAbj0X755qiY9iV_DMExR9BRQHv7RIr64yq2a_tOiVSOTcm27AJhTLIkT2JHkHnXmlTHdN0Xca24eNHw" type="text/javascript"></script>
+#map_canvas{:style=>"width: 500px; height: 400px;"}
+<script type="text/javascript"src="https://maps.google.com/maps/api/js?sensor=false">
+</script>
+
 
 :javascript
-	//<![CDATA[
-	function load() {
-		if (GBrowserIsCompatible()) {
-		var map = new GMap2(document.getElementById("map")); map.addControl(new GSmallMapControl());
-		var point = new GLatLng(#{geocoding.latitude},#{geocoding.longitude});
-	geocoder = new GClientGeocoder();
-	map.setCenter(point, 13);
-	var marker = new GMarker(point);
-	var info="<p style='font-family: Arial; font-size: small;'>#{req["location"]}";
-	map.addOverlay(marker);
-	GEvent.addListener(marker, "click", function() { marker.openInfoWindowHtml(info); });
-	map.addOverlay(marker);
-	marker.openInfoWindowHtml(info); 
-	}
-	}
-	//]]>
+  function initialize() {
+    var latlng = new google.maps.LatLng(#{geocoding.latitude},#{geocoding.longitude});
+    var myOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+
+    var marker = new google.maps.Marker({
+    	position: latlng,
+    	map:map
+    	});
+  }
+
+
+
+
+
