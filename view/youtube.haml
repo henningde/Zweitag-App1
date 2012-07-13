@@ -2,4 +2,4 @@
 -youtube =  YouTube.new(req["location"])
 %p Titel #{youtube.title}
 %p
-<object width="425" height="355"><param name="movie" value="#{youtube.link}"></param><param name="wmode" value="transparent"></param><embed src="#{youtube.link}" type="application/x-shockwave-flash" wmode="transparent" width="425" height="355"></embed></object> 
+<iframe width="560" height="315" src="#{youtube.link}" frameborder="0" allowfullscreen></iframe>
