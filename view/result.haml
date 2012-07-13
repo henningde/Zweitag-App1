@@ -11,19 +11,15 @@
 		-if req["location"] !=""
 			%p Hallo  suche nach #{req["location"] }
 			-if req["location"] !="" && (req["api"] =="Location" || req["api"] =="all")
-				-template = Tilt.new(@dir+'geocoding.haml')
-				=template.render(nil,:req=>req)
+				=render_url('geocoding.haml',req)
 			-if req["location"] !="" && (req["api"] =="Picture" || req["api"] =="all")
-				-template = Tilt.new(@dir+'panoramio.haml')
-				=template.render(nil,:req=>req)
+				=render_url('panoramio.haml',req)
 			-if req["location"] !="" && (req["api"] =="YouTube" || req["api"] =="all")
-				-template = Tilt.new(@dir+'youtube.haml')
-				=template.render(nil,:req=>req)
+				=render_url('youtube.haml',req)
 			-if req["location"] !="" && (req["api"] =="Weather" || req["api"] =="all")
-				-template = Tilt.new(@dir+'weather.haml')
-				=template.render(nil,:req=>req)
+				=render_url('weather.haml',req)
 		-else
 			%p{:style=>"color:red;font-weight:bold"} Fehler bei der Suche
 		%p{:style=>"font-weight:bold"}  Neue Suche
-		-template = Tilt.new(@dir+'index.haml')
-		=template.render(nil,:req=>req)
+		=render_url('index.haml')
+
